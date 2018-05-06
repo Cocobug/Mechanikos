@@ -1,4 +1,4 @@
-offset=5;font=fixedsys;color=red;size=32;show=1;x=220;y=220;height=7;width=40;ihateTTS
+offset=5;font=fixedsys;color=red;size=22;show=2;x=40;y=60;height=7;width=40
 0//Dadaluma (Bump)//Shockwave
 4//Missile & Chakra//Missile & Chakra
 22//Dadaluma (North West)//Dadaluma (North West)
@@ -38,4 +38,4 @@ offset=5;font=fixedsys;color=red;size=32;show=1;x=220;y=220;height=7;width=40;ih
 608//Raid Damage//Raid Damage
 618//Ultros (North East)//Ultros (North East)
 652//Raid Damage//Raid Damage
-662//Enrage//Enrage		
+662//Enrage//Enrage
