@@ -1,6 +1,7 @@
 import sys,os
 import time
-import Tkinter,threading
+import threading
+import tkinter as tk
 
 import win32com.client as wincl
 speak = wincl.Dispatch("SAPI.SpVoice")
@@ -15,6 +16,12 @@ class Config():
         self.on_color=None
         self.show=1
 
+class Timer():
+    def __init__(self):
+        self.first_time=time.time()
+
+    def __call__(self):
+        return time.time()-self.first_time
 #Utilities
 def checkfile(f):
     'Check every line of the file for syntax errors'
@@ -60,27 +67,66 @@ def split_line(line):
 # offset is the amount of time before the call (negative for precall)
 # Every line Should look like Time (HH:MM:SS or SS) // Text to show // Text to say
 try:
+    print("Initialysing timer")
+    gtimer=Timer()
+    print("Opening Time Tables...")
     with open(sys.argv[1]) as f:
         time_data=f.read().splitlines()
     f.close()
-    if len(sys.argv)==2:
-        checkfile(time_data)
+    print("Cheking Time Data")
+    checkfile(time_data)
 except:
     print "Error reading file"
+    sys.exit()
 
 
 class textwindow(threading.Thread):
     def run(self):
-        root = Tkinter.Tk()
+        root = tk.Tk()
         root.overrideredirect(True)
         root.geometry("+100+120")
         root.lift()
         root.wm_attributes("-topmost", True)
         root.wm_attributes("-disabled", True)
         root.wm_attributes("-transparentcolor", "white")
-        T = Tkinter.Text(root, height=2, width=30,bd=0,fg="red",font=("fixedsys", 22))
+        T = tk.Text(root, height=2, width=30,bd=0,fg="red",font=("fixedsys", 22))
         T.pack()
-        T.insert(Tkinter.END, "Just a text Widget\nin two lines\n")
+        T.insert(tk.END, "Just a text Widget\nin two lines\n")
 
         root.mainloop()
-print "2"
+
+    def join(self):
+        self.root.quit()
+
+
+class Application(tk.Frame):
+    def __init__(self, master=None,gtimer=Timer()):
+        self.timer=gtimer
+        tk.Frame.__init__(self, master)
+        master.overrideredirect(True)
+        master.geometry("+100+120")
+        master.lift()
+        master.wm_attributes("-topmost", True)
+        master.wm_attributes("-disabled", True)
+        master.wm_attributes("-transparentcolor", "white")
+        self.pack()
+        self.createWidgets()
+
+    def createWidgets(self):
+        self.now = tk.StringVar()
+        self.time = tk.Label(self,bg="white", height=2, width=30,bd=0,fg="red",font=("fixedsys", 22))
+        self.time.pack(side="top")
+        self.time["textvariable"] = self.now
+
+        # initial time display
+        self.onUpdate()
+
+    def onUpdate(self):
+        # update displayed time
+        self.now.set(self.timer())
+        # schedule timer to call myself after 1 second
+        self.after(100, self.onUpdate)
+
+root = tk.Tk()
+app = Application(master=root)
+root.mainloop()
