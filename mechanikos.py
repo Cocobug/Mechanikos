@@ -16,12 +16,15 @@ class Config():
         self.show=1
         self.offset=5
         self.size=32
+        self.x=220
+        self.y=220
 
     def valtype(self):
         self.show=int(self.show)
         self.offset=int(self.offset)
         self.size=int(self.size)
-
+        self.x=int(self.x)
+        self.y=int(self.y)
     def __str__(self):
         return "delay:{} mili:{} font:{} color:{} show:{} offset:{} size:{}".format(self.delay,
         self.miliseconds,self.font,self.color,self.show,self.offset,self.size)
@@ -52,20 +55,27 @@ class Timetable():
 
     def __call__(self,time,updateobject):
         if self.waitfor<time: # Time to change the text for the next mechanic
-            updateobject.changeText(self.getnext()[1])
+
             self.step+=1
+            print " > [{}] Showing {} at {}".format(self.step,self.getnext()[1],time)
+            updateobject.changeText(self.getnext()[1])
             self.waitfor=self.getnext()[0]
             self.shotcall=0 # You can shotcall again
             if self.step>self.ln: #Stop the program
+                print "Timetable finished, shutting down"
                 updateobject.destroy()
                 sys.exit()
 
         elif self.waitfor<time+self.config.offset: #Time to shotcall
             if self.shotcall==0:
                 self.shotcall=1 # You can't shotcall anymore
-                print "Shotcalling"
+
                 # Only shotcall the lines that exist
-                print self.getnext()
+                text=self.getnext()[2]
+                if text!="":
+                    print " > [{}] Shotcalling {} at {}".format(self.step,text,time)
+                    speak.Speak(text)
+
         else:
             return None
 
@@ -158,7 +168,7 @@ class Application(tk.Frame):
         self.gconfig=config
         tk.Frame.__init__(self, master)
         master.overrideredirect(True)
-        master.geometry("+100+120")
+        master.geometry("+{}+{}".format(config.x,config.y))
         master.lift()
         master.wm_attributes("-topmost", True)
         master.wm_attributes("-disabled", True)
@@ -171,7 +181,7 @@ class Application(tk.Frame):
         self.time = tk.Label(self,bg="white", height=2, width=30,bd=0,fg="red",font=("fixedsys", 22))
         self.time.pack(side="top")
         self.time["textvariable"] = self.now
-
+        self.now.set(self.timetables.getindex(0)[1])
         # initial time display
         self.onUpdate()
 

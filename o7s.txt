@@ -1,4 +1,4 @@
-offset=5;font=fixedsys;color=red;size=32;show=2
-00:00 // Zibe // Zobe
-00:01 // TKK // Team kill
-00:05 // Wierd // Wierd
+offset=5;font=fixedsys;color=red;size=32;show=2;x=220;y=220
+00:15 // First mechanic\n But on like\n 7 lines or so // First
+00:30 // Second mechanic // Second
+00:50 // Third mechanic // Third
