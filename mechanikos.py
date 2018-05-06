@@ -1,10 +1,6 @@
 import sys,os
 import time
-
-from colorama import init
-init(strip=not sys.stdout.isatty()) # strip colors if stdout is redirected
-from termcolor import cprint
-from pyfiglet import figlet_format
+import Tkinter,threading
 
 import win32com.client as wincl
 speak = wincl.Dispatch("SAPI.SpVoice")
@@ -72,19 +68,19 @@ try:
 except:
     print "Error reading file"
 
-import Tkinter
-root = Tkinter.Tk()
 
-root.overrideredirect(True)
+class textwindow(threading.Thread):
+    def run(self):
+        root = Tkinter.Tk()
+        root.overrideredirect(True)
+        root.geometry("+100+120")
+        root.lift()
+        root.wm_attributes("-topmost", True)
+        root.wm_attributes("-disabled", True)
+        root.wm_attributes("-transparentcolor", "white")
+        T = Tkinter.Text(root, height=2, width=30,bd=0,fg="red",font=("fixedsys", 22))
+        T.pack()
+        T.insert(Tkinter.END, "Just a text Widget\nin two lines\n")
 
-root.geometry("+100+120")
-root.lift()
-root.wm_attributes("-topmost", True)
-root.wm_attributes("-disabled", True)
-root.wm_attributes("-transparentcolor", "white")
-T = Tkinter.Text(root, height=2, width=30,bd=0,fg="red",font=("fixedsys", 22))
-T.pack()
-T.insert(Tkinter.END, "Just a text Widget\nin two lines\n")
-
-root.mainloop()
+        root.mainloop()
 print "2"
