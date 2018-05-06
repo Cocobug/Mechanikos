@@ -1,4 +1,4 @@
-offset=5;font=fixedsys;color=blue;size=11;show=5;x=1250;y=402
+offset=5;font=fixedsys;color=blue;size=25;show=5;x=1320;y=402
 00:08 // 1HP // Heartless Angel
 00:14 // Raid Damage // Raid damage
 00:21 // HYPERDRIVE // Hyperdrive
