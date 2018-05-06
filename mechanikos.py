@@ -1,11 +1,12 @@
 import sys,os
 import time
-import threading
-import tkinter as tk
+try:
+    import tkinter as tk
+except ImportError:
+    import Tkinter as tk
 
 import win32com.client as wincl
 speak = wincl.Dispatch("SAPI.SpVoice")
-
 #Vague config class, will change asap
 class Config():
     def __init__(self):
@@ -41,12 +42,6 @@ class Timer():
     def __call__(self):
         return time.time()-self.first_time
 
-class shotcaller(threading.Thread):
-    def run(self):
-        pass
-    def join(self):
-        pass
-
 class Timetable():
     "All the logic, updating and shotcalling"
     def __init__(self,timetables,config):
@@ -65,7 +60,7 @@ class Timetable():
             self.waitfor=self.getnext()[0]
             self.shotcall=0 # You can shotcall again
             if self.step>self.ln: #Stop the program
-                print "Timetable finished, shutting down"
+                print ("Timetable finished, shutting down")
                 updateobject.destroy()
                 sys.exit()
 
@@ -76,7 +71,7 @@ class Timetable():
                 # Only shotcall the lines that exist
                 text=self.getnext()[2]
                 if text!="":
-                    print " > [{}] Shotcalling {} at {}".format(self.step,text,time)
+                    print (" > [{}] Shotcalling {} at {}".format(self.step,text,time))
                     speak.Speak(text)
 
         else:
@@ -84,7 +79,7 @@ class Timetable():
 
     def updateText(self,updateobject,time):
         "Update the text with the next X mechanics" #Ending are weird, but I can't bother right now
-        print " > [{}] Showing next {} lines at {}".format(self.step,self.config.show,time)
+        print (" > [{}] Showing next {} lines at {}".format(self.step,self.config.show,time))
         lines=""
         for a,text,b in self.getnnext(self.config.show):
             lines=lines+text.replace(";","\n   ")+'\n'
@@ -168,7 +163,7 @@ try:
     print("Cheking Time Data...")
     config,timetables=checkfile(time_data)
 except:
-    print "Error reading file"
+    print("Error reading file")
     sys.exit()
 
 
