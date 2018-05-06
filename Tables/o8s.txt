@@ -1,48 +1,48 @@
-delay;miliseconds;offset=10;font=fixedsys;color=red;size=11;show=2
+offset=5;font=fixedsys;color=blue;size=11;show=5;x=1250;y=402
 00:08 // 1HP // Heartless Angel
-00:14 // Raid Damage // Ultima
-00:21 // HYPERDRIVE // HYPERDRIVE
+00:14 // Raid Damage // Raid damage
+00:21 // HYPERDRIVE // Hyperdrive
 00:29 // Celestriad // Celestriad
-00:39 // Ultima // Raid Damage
+00:39 // Raid damage // Raid Damage
 00:51 // FORSAKEN 1;1HP>Circles>kite>head // Forsaken
 01:16 // Double wings // Double wings
-01:22 // Raid Damage // Ultima
+01:22 // Raid Damage // Raid damage
 01:33 // 1HP>Circles>kite>head // repeat
 01:46 // LIGHT OF JUDGEMENT // Light of judgement
 02:03 // smol Trine + right/left // Small Trine and single wing
 02:21 // DOUBLE wings // Double wings
-02:38 // Raid Damage + stack // Ultima
+02:38 // Raid Damage + stack // Raid damage
 02:45 // FRONT/BACK // Front back
-02:56 // ULTIMATE EMBRACE (invuln) // Ultimate embrace
+02:56 // ULTIMATE EMBRACE (invuln) // Raid damagete embrace
 03:03 // HYPERDRIVE // Hyperdrive
-03:11 // Raid Damage; boss middle// Ultima
+03:11 // Raid Damage; boss middle// Raid damage
 03:27 // FORSAKEN 2; DPS kite meteors;Tanks & heals soak 1 circle;bait south FRONT/BACK;soak out circle, then in + share // Forsaken
 04:01 // LIGHT OF JUDGEMENT // light of judgement
 04:18 // Celestriad // Celestriad
 04:27 // SINGLE wing // Single wing
-04:34 // Raid Damage // Ultima
+04:34 // Raid Damage // Raid damage
 04:51 // Big Trine + stack // Big trine and stack
 05:00 // FRONT/BACK // Front back
 05:11 // DOUBLE wings // Double wings
-05:17 // ULTIMATE EMBRACE (invuln) // Ultimate embrace
+05:17 // ULTIMATE EMBRACE (invuln) // Raid damagete embrace
 05:25 // HYPERDRIVE // Hyperdrive
-05:33 // Raid damage // Ultima
+05:33 // Raid damage // Raid damage
 05:49 // FORSAKEN 3;4 tethers knockback + RD; DPS south Heal west;Tanks east + share TB // Forsaken
-06:15 // R/sleep L/charmed;Sleep soak/Charmed to positions;Raid Damage // 
-06:31 // FIRST FORSAKEN;+ 4 player soak //
-06:44 // DOUBLE wings (face boss to side);Raid Damage;SINGLE wing + Idol right/left //
-07:02 // LIGHT OF JUDGEMENT
-07:19 // smolTrine
-07:25 // SINGLE wing
-07:36 // DOUBLE wing
-07:42 // ULTIMATE EMBRACE (invuln)
-07:59 // big Trine (pack)
-08:08 // FRONT/BACK
-08:20 // HYPERDRIVE
-08:28 // Raid Damage x2;drag boss to middle
+06:15 // R/sleep L/charmed;Sleep soak/Charmed to positions;Raid Damage //  
+06:31 // FIRST FORSAKEN;+ 4 player soak //  
+06:44 // DOUBLE wings (face boss to side);Raid Damage;SINGLE wing + Idol right/left //  
+07:02 // LIGHT OF JUDGEMENT // Light of judgement
+07:19 // smol Trine // small trine
+07:25 // SINGLE wing // Single wing
+07:36 // DOUBLE wing // Double wings
+07:42 // ULTIMATE EMBRACE (invuln) // Raid damagete embrace
+07:59 // big Trine (pack) // Big Trine and stack
+08:08 // FRONT/BACK // front/back
+08:20 // HYPERDRIVE // hyperdrive
+08:28 // Raid Damage x2;drag boss to middle // raid damage
 08:52 // FORSAKEN 4;4 tethers knockback + RD; DPS south Heal west;Tanks east + share TB // Forsaken
-09:18 // R/sleep L/charmed;Sleep soak/Charmed to positions;Raid Damage // 
-09:34 // FIRST FORSAKEN;+ 4 player soak //
-09:47 // DOUBLE wings (face boss to side);Raid Damage;SINGLE wing + Idol right/left //
-10:05 // Raid Damage x4
+09:18 // R/sleep L/charmed;Sleep soak/Charmed to positions;Raid Damage //  
+09:34 // FIRST FORSAKEN;+ 4 player soak //  
+09:47 // DOUBLE wings (face boss to side);Raid Damage;SINGLE wing + Idol right/left //  
+10:05 // Raid Damage x4 // Raid damage
 10:38 // 10:38 ENRAGE // Enrage
