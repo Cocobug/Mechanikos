@@ -1,4 +1,4 @@
-delay;miliseconds;offset=-5;font=big;color=yellow;on_color=on_blue;size=32;show=2
-00:22 // Zibe // Zobe
-00:59 // TKK // Team kill
-223 // Wierd // Wierd
+offset=5;font=fixedsys;color=red;size=32;show=2
+00:00 // Zibe // Zobe
+00:01 // TKK // Team kill
+00:05 // Wierd // Wierd
