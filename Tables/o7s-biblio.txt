@@ -1,4 +1,4 @@
-offset=5;font=fixedsys;color=red;size=32;show=1;x=220;y=220;height=7;width=40;border=2
+offset=5;font=fixedsys;color=red;size=32;show=1;x=220;y=220;height=7;width=40
 0//Demon Simulation//Demon Simulation
 18//Dadaluma simulation//Dadaluma (Bump)
 31//Missile & Chakra//Missile & Chakra

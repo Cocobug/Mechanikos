@@ -22,6 +22,7 @@ class Config():
         self.border=0
         self.x=220
         self.y=220
+        self.tts=True
 
     def valtype(self):
         self.show=int(self.show)
@@ -33,8 +34,8 @@ class Config():
         self.y=int(self.y)
 
     def __str__(self):
-        return "delay:{} mili:{} font:{} color:{} show:{} offset:{} size:{} height:{} width:{} x,y={},{}".format(self.delay,
-        self.miliseconds,self.font,self.color,self.show,self.offset,self.size,self.height,self.width,self.x,self.y)
+        return "delay:{} mili:{} font:{} color:{} show:{} offset:{} size:{} height:{} width:{} x,y={},{} tts={}".format(self.delay,
+        self.miliseconds,self.font,self.color,self.show,self.offset,self.size,self.height,self.width,self.x,self.y,self.TTS)
 
 class Timer():
     def __init__(self):
@@ -71,7 +72,7 @@ class Timetable():
 
                 # Only shotcall the lines that exist
                 text=self.getnext()[2]
-                if text!="" and text!=" ":
+                if text!="" and self.config.tts:
                     print (" > [{}] Shotcalling {} at {}".format(self.step,text,time))
                     speak.Speak(text)
 
@@ -133,6 +134,8 @@ def load_conf(conf):
             C.delay=True
         elif line=="miliseconds":
             C.miliseconds=True
+        elif line=="ihateTTS":
+            C.tts=False
         else:
             var,val=line.split('=')
             setattr(C,var,val)
@@ -174,19 +177,23 @@ class Application(tk.Frame):
         self.timer=gtimer
         self.timetables=timetables
         self.gconfig=config
+        if config.color=="white":
+            self.acolor="black"
+        else:
+            self.acolor="white"
         tk.Frame.__init__(self, master)
         master.overrideredirect(True)
         master.geometry("+{}+{}".format(config.x,config.y))
         master.lift()
         master.wm_attributes("-topmost", True)
         master.wm_attributes("-disabled", True)
-        master.wm_attributes("-transparentcolor", "white") #Make that clever
+        master.wm_attributes("-transparentcolor", self.acolor) #Make that clever
         self.pack()
         self.createWidgets()
 
     def createWidgets(self):
         self.now = tk.StringVar()
-        self.time = tk.Label(self,bg="white", height=config.height, justify=tk.LEFT,anchor='nw',width=config.width,bd=config.border,fg=config.color,font=(config.font, config.size))
+        self.time = tk.Label(self,bg=self.acolor, height=config.height, justify=tk.LEFT,anchor='nw',width=config.width,bd=config.border,fg=config.color,font=(config.font, config.size))
         self.time.grid(sticky="w")
         self.time["textvariable"] = self.now
         self.timetables.updateText(self,self.timer())
