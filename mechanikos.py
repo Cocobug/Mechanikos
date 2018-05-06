@@ -70,7 +70,7 @@ class Timetable():
 
                 # Only shotcall the lines that exist
                 text=self.getnext()[2]
-                if text!="":
+                if text!="" and text!=" ":
                     print (" > [{}] Shotcalling {} at {}".format(self.step,text,time))
                     speak.Speak(text)
 
@@ -141,6 +141,7 @@ def load_conf(conf):
 def split_line(line):
     "Split lines according to the nominal format, return time as seconds"
     time,show,say=line.split("//")
+    show,say=show.strip(" "),say.strip(" ")
     stime,time=time.split(":"),0
     for hms in stime:
         #Only powers of 60 so yeah; 1:12:33:11 will be incorrect, bite me
@@ -178,13 +179,13 @@ class Application(tk.Frame):
         master.lift()
         master.wm_attributes("-topmost", True)
         master.wm_attributes("-disabled", True)
-        master.wm_attributes("-transparentcolor", "white")
+        master.wm_attributes("-transparentcolor", "white") #Make that clever
         self.pack()
         self.createWidgets()
 
     def createWidgets(self):
         self.now = tk.StringVar()
-        self.time = tk.Label(self,bg="white", height=config.height, justify=tk.LEFT,anchor='n',width=config.width,bd=0,fg="red",font=("fixedsys", 22))
+        self.time = tk.Label(self,bg="white", height=config.height, justify=tk.LEFT,anchor='n',width=config.width,bd=0,fg=config.color,font=(config.font, config.size))
         self.time.grid(sticky="w")
         self.time["textvariable"] = self.now
         self.timetables.updateText(self,self.timer())

@@ -1,4 +1,40 @@
 offset=5;font=fixedsys;color=red;size=32;show=1;x=220;y=220;height=7;width=40
-00:15 // First mechanic;But on like;7 lines or so // First
-00:30 // Second mechanic // Second
-00:50 // Third mechanic // Third
+0//Demon Simulation//Demon Simulation
+18//Dadaluma simulation//Dadaluma (Bump)
+31//Missile & Chakra//Missile & Chakra
+40//RUN PROGRAM (Daddy)//Dadaluma (North West)
+54//Magitek Ray//Ray
+70//Arm and Hammer//Tank Buster
+81//Prey//Prey
+91//Magitek Ray//Ray
+106//Ultros Simulation//Ink
+116//Diffractive Plasma//Raid Damage
+127//Tentacle Simulation//Tentacles
+138//NE Spawn//Ultros (North East)
+176//Diffractive Plasma//Raid Damage
+191//Air Force Simulation//Air Force (Move away)
+203//Missile & Adds//Missile & Adds
+228//Bomb Deployement//Dada or Biblio
+238//Arm and Hammer//Tank Buster
+247//Magitek Ray//Ray
+262//Virus//Virus
+281//Diffractive Plasma x2//Raid Damage x2
+304//Prey//Prey
+316//Viral Weapon//Viral Weapon
+323//Magitek Ray//Ray
+329//Flight//Flight + Stop
+350//Arm and Hammer//Tank Buster
+358//Diffractive Plasma//Raid Damage
+374//Ultros Simulation//Ultros (Ink)
+376//Tentacle Simulation//Ultros (Tentacles)
+382//Bomb Deployement + Atomic//Bomb + Atomic
+396//Magitek Ray//Ray
+405//Diffractive Plasma//Raid Damage
+415//SE Spawn//Ultros (South East)
+449//Diffractive Plasma//Raid Damage
+449//Biblio or Daddy//Biblio or Daddy
+605//Air Force Simulation//Air Force (Move away)
+621//Diffractive Plasma//Raid Damage
+638//Adds & Bombs//Adds & Bombs
+652//Arm and Hammer//Tank Buster
+662//Enrage//Enrage	
