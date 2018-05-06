@@ -31,11 +31,19 @@ def checkfile(f):
     except:
         print('Error reading config')
 
+    timecheck=0
     for i in range(1,len(f)):
         try:
             time,show,say=split_line(f[i])
+            if time<timecheck:
+                print("Error on the timetables line {}".format(i))
+                raise AssertionError
+            timecheck=time
         except:
             print("error line {} : {}".format(i,f[i]))
+            sys.exit()
+
+    return conf
 
 def load_conf(conf):
     "Load the confing in a line"
@@ -53,11 +61,10 @@ def load_conf(conf):
 def split_line(line):
     "Split lines according to the nominal format, return time as seconds"
     time,show,say=line.split("//")
-    stime,time,i=time.split(":"),0,0
+    stime,time=time.split(":"),0
     for hms in stime:
         #Only powers of 60 so yeah; 1:12:33:11 will be incorrect, bite me
-        time=time+int(hms)*(60**i)
-        i+=1
+        time=time*60+int(hms)
     return time,show,say
 # Init the thread for the TTS (can't have times offset by the wait)
 
@@ -73,14 +80,14 @@ try:
     with open(sys.argv[1]) as f:
         time_data=f.read().splitlines()
     f.close()
-    print("Cheking Time Data")
+    print("Cheking Time Data...")
     checkfile(time_data)
 except:
     print "Error reading file"
     sys.exit()
 
 
-class textwindow(threading.Thread):
+class shotcaller(threading.Thread):
     def run(self):
         root = tk.Tk()
         root.overrideredirect(True)
@@ -98,9 +105,22 @@ class textwindow(threading.Thread):
     def join(self):
         self.root.quit()
 
+class Timetable():
+    def __init__(self,timetables):
+        self.timetables=timetables
+        self.waitfor=self.timetables[0][0]
+        self.step=0
+
+    def __call__(self,time):
+        if self.waitfor<time:
+            self.step+=1
+            self.waitfor=self.timetables[self.step][0]
+            return self.timetables[self.step-1]
+        else:
+            return None
 
 class Application(tk.Frame):
-    def __init__(self, master=None,gtimer=Timer()):
+    def __init__(self, master=None,gtimer=Timer(),shotcaller=None,timetables=None):
         self.timer=gtimer
         tk.Frame.__init__(self, master)
         master.overrideredirect(True)
@@ -128,5 +148,5 @@ class Application(tk.Frame):
         self.after(100, self.onUpdate)
 
 root = tk.Tk()
-app = Application(master=root)
+app = Application(master=root,gtimer=gtimer,shotcaller=None,timetables=None)
 root.mainloop()
