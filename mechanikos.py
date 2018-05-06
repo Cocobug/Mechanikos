@@ -14,6 +14,8 @@ class Config():
         self.font="fixedsys"
         self.color="red"
         self.show=1
+        self.height=7
+        self.width=30
         self.offset=5
         self.size=32
         self.x=220
@@ -23,11 +25,14 @@ class Config():
         self.show=int(self.show)
         self.offset=int(self.offset)
         self.size=int(self.size)
+        self.height=int(self.height)
+        self.width=int(self.width)
         self.x=int(self.x)
         self.y=int(self.y)
+
     def __str__(self):
-        return "delay:{} mili:{} font:{} color:{} show:{} offset:{} size:{}".format(self.delay,
-        self.miliseconds,self.font,self.color,self.show,self.offset,self.size)
+        return "delay:{} mili:{} font:{} color:{} show:{} offset:{} size:{} height:{} width:{} x,y={},{}".format(self.delay,
+        self.miliseconds,self.font,self.color,self.show,self.offset,self.size,self.height,self.width,self.x,self.y)
 
 class Timer():
     def __init__(self):
@@ -55,10 +60,8 @@ class Timetable():
 
     def __call__(self,time,updateobject):
         if self.waitfor<time: # Time to change the text for the next mechanic
-
             self.step+=1
-            print " > [{}] Showing {} at {}".format(self.step,self.getnext()[1],time)
-            updateobject.changeText(self.getnext()[1])
+            self.updateText(updateobject,time)
             self.waitfor=self.getnext()[0]
             self.shotcall=0 # You can shotcall again
             if self.step>self.ln: #Stop the program
@@ -78,6 +81,14 @@ class Timetable():
 
         else:
             return None
+
+    def updateText(self,updateobject,time):
+        "Update the text with the next X mechanics" #Ending are weird, but I can't bother right now
+        print " > [{}] Showing next {} lines at {}".format(self.step,self.config.show,time)
+        lines=""
+        for a,text,b in self.getnnext(self.config.show):
+            lines=lines+text.replace(";","\n   ")+'\n'
+        updateobject.changeText(lines)
 
     def getindex(self,index):
         try:
@@ -178,10 +189,10 @@ class Application(tk.Frame):
 
     def createWidgets(self):
         self.now = tk.StringVar()
-        self.time = tk.Label(self,bg="white", height=2, width=30,bd=0,fg="red",font=("fixedsys", 22))
-        self.time.pack(side="top")
+        self.time = tk.Label(self,bg="white", height=config.height, justify=tk.LEFT,anchor='n',width=config.width,bd=0,fg="red",font=("fixedsys", 22))
+        self.time.grid(sticky="w")
         self.time["textvariable"] = self.now
-        self.now.set(self.timetables.getindex(0)[1])
+        self.timetables.updateText(self,self.timer())
         # initial time display
         self.onUpdate()
 
