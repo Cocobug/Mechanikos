@@ -1,40 +1,41 @@
 offset=5;font=fixedsys;color=red;size=32;show=1;x=220;y=220;height=7;width=40;ihateTTS
-0//Dadaluma simulation//Dadaluma (Bump)
+0//Dadaluma (Bump)//Shockwave
 4//Missile & Chakra//Missile & Chakra
-22//RUN PROGRAM (Daddy)//Dadaluma (North West)
+22//Dadaluma (North West)//Dadaluma (North West)
 36//Magitek Ray//Ray
 51//Arm and Hammer//Tank Buster
 63//Prey//Prey
 82//Magitek Ray//Ray
-88//Demon Simulation//Demon Simulation
-106//Air Force Simulation//Air Force (Move away)
+88//Circles//Demon Simulation
+106//Air Force (Move away)//Air Force (Move away)
 108//Missile & Adds//Missile & Adds
-142//Bomb Deployement//Dada or Biblio
+142//Dada or Biblio//Dada or Biblio
 152//Arm and Hammer//Tank Buster
-161//Magitek Ray//Ray
-167//Ultros Simulation//Ink
-186//Diffractive Plasma//Raid Damage
-196//Tentacle Simulation//Tentacles
-207//SE Spawn//Ultros (South East)
-244//Diffractive Plasma//Raid Damage
+161//Ray//Ray
+167//Ultros (Ink)//Ultros (Ink)
+186//Raid Damage//Raid Damage
+196//Tentacles//Tentacles
+207//Ultros (South East)//Ultros (South East)
+244//Raid Damage//Raid Damage
 259//Virus//Virus
-278//Diffractive Plasma x2//Raid Damage x2
+278//Raid Damage x2//Raid Damage x2
 301//Prey//Prey
-313//Viral Weapon//Viral Weapon
-319//Magitek Ray//Ray
-325//Flight//Flight + Stop
+313//Disoriented//Disoriented
+319//Ray//Ray
+325//Flight + Stop//Flight + Stop
 346//Arm and Hammer//Tank Buster
-354//Diffractive Plasma//Raid Damage
-369//Air Force Simulation//Air Force (Move away)
-377//Diffractive Plasma//Raid Damage
+354//Raid Damage//Raid Damage
+369//Air Force (Move away)//Air Force (Move away)
+377//Raid Damage//Raid Damage
 394//Adds & Bombs//Adds & Bombs
 408//Arm and Hammer//Tank Buster
-416//Diffractive Plasma//Raid Damage
-570//Ultros Simulation//Ultros (Ink)
-580//Tentacle Simulation//Ultros (Tentacles)
-586//Bomb Deployement + Atomic//Bomb + Atomic
-600//Magitek Ray//Ray
-608//Diffractive Plasma//Raid Damage
-618//NE Spawn//Ultros (North East)
-652//Diffractive Plasma//Raid Damage
-662//Enrage//Enrage
+416//Raid Damage//Raid Damage
+418//Biblio or Daddy//Biblio or Daddy
+570//Ultros (Ink)//Ultros (Ink)
+580//Ultros (Tentacles)//Ultros (Tentacles)
+586//Bomb + Atomic//Bomb + Atomic
+600//Ray//Ray
+608//Raid Damage//Raid Damage
+618//Ultros (North East)//Ultros (North East)
+652//Raid Damage//Raid Damage
+662//Enrage//Enrage		

@@ -69,7 +69,6 @@ class Timetable():
         elif self.waitfor<time+self.config.offset: #Time to shotcall
             if self.shotcall==0:
                 self.shotcall=1 # You can't shotcall anymore
-
                 # Only shotcall the lines that exist
                 text=self.getnext()[2]
                 if text!="" and self.config.tts:
