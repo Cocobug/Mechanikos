@@ -10,6 +10,7 @@ Config:
 ''The first line of every project is a config containing some of the following info separated by semicolon''
 * delay=False         # Delay mode instead of absolute time mode
 * miliseconds=False   # Timetable format in ms instead of minutes:seconds
+* ihateTTS=False      # Toggle callouts
 * font=fixedsys       # Font to use for displayed
 * color=red           # Font color
 * border=0            # The border of the text, in px
