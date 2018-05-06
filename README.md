@@ -7,7 +7,7 @@ Dependencies:
 * update ENV (check https://github.com/BurntSushi/nfldb/wiki/Python-&-pip-Windows-installation)
 
 Config:
-''The first line of every project is a config containing some of the followin info separated by semicolon''
+''The first line of every project is a config containing some of the following info separated by semicolon''
 * delay=False         #Delay mode instead of absolute time mode
 * miliseconds=False   #Use miliseconds
 * font="fixedsys"     #Font to use for displayed
