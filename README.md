@@ -12,6 +12,7 @@ Config:
 * miliseconds=False   # Timetable format in ms instead of minutes:seconds
 * font=fixedsys       # Font to use for displayed
 * color=red           # Font color
+* border=0            # The border of the text, in px
 * show=1              # Number of mechanics to show
 * height=7            # Number of lines to show
 * width=1000          # Width of the display

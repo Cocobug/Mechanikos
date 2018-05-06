@@ -1,4 +1,4 @@
-offset=5;font=fixedsys;color=red;size=32;show=1;x=220;y=220;height=7;width=40
+offset=5;font=fixedsys;color=red;size=32;show=1;x=220;y=220;height=7;width=40;border=2
 0//Demon Simulation//Demon Simulation
 18//Dadaluma simulation//Dadaluma (Bump)
 31//Missile & Chakra//Missile & Chakra
@@ -37,4 +37,4 @@ offset=5;font=fixedsys;color=red;size=32;show=1;x=220;y=220;height=7;width=40
 621//Diffractive Plasma//Raid Damage
 638//Adds & Bombs//Adds & Bombs
 652//Arm and Hammer//Tank Buster
-662//Enrage//Enrage	
+662//Enrage//Enrage

@@ -19,6 +19,7 @@ class Config():
         self.width=30
         self.offset=5
         self.size=32
+        self.border=0
         self.x=220
         self.y=220
 
@@ -185,7 +186,7 @@ class Application(tk.Frame):
 
     def createWidgets(self):
         self.now = tk.StringVar()
-        self.time = tk.Label(self,bg="white", height=config.height, justify=tk.LEFT,anchor='n',width=config.width,bd=0,fg=config.color,font=(config.font, config.size))
+        self.time = tk.Label(self,bg="white", height=config.height, justify=tk.LEFT,anchor='nw',width=config.width,bd=config.border,fg=config.color,font=(config.font, config.size))
         self.time.grid(sticky="w")
         self.time["textvariable"] = self.now
         self.timetables.updateText(self,self.timer())
