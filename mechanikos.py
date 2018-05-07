@@ -171,8 +171,6 @@ try:
             config_data=f.read().splitlines()
         f.close()
         base_config=load_conf(config_data)
-        print config_data
-        print base_config
     except:
         print "error loading config.txt, using default config"
         base_config=Config()
