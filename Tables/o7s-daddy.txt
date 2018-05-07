@@ -5,11 +5,11 @@ offset=5;font=fixedsys;color=red;size=22;show=2;x=40;y=60;height=7;width=40
 36//Magitek Ray//Ray
 51//Arm and Hammer//Tank Buster
 63//Prey//Prey
-82//Magitek Ray//Ray
-88//Circles//Demon Simulation
+73//Magitek Ray//Ray
+88//Biblio Circles//Biblio Circles
 106//Air Force (Move away)//Air Force (Move away)
 108//Missile & Adds//Missile & Adds
-142//Dada or Biblio//Dada or Biblio
+142//Bomb Deployement//Bombs
 152//Arm and Hammer//Tank Buster
 161//Ray//Ray
 167//Ultros (Ink)//Ultros (Ink)

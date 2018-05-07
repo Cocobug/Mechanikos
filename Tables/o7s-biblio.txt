@@ -1,5 +1,5 @@
 offset=5;font=fixedsys;color=red;size=22;show=2;x=40;y=60;height=7;width=40
-0//Circles//Demon Simulation
+0//Biblio Circles//Biblio Circles
 18//Dadaluma (Bump)//Shockwave
 31//Missile & Chakra//Missile & Chakra
 40//Dadaluma (North West)//Dadaluma (North West)
