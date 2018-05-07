@@ -10,6 +10,7 @@ Config:
 ''The first line of every project is a config containing some of the following info separated by semicolon''
 ''You can use a config file (config.txt), use newlines instead of semicolons''
 * delay=False         # Delay mode instead of absolute time mode
+* padding=0           # A delay for every mechanic (adds a number to every timing)
 * miliseconds=False   # Timetable format in ms instead of minutes:seconds
 * ihateTTS=False      # Toggle callouts
 * font=fixedsys       # Font to use for displayed

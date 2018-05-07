@@ -20,6 +20,7 @@ class Config():
         self.offset=5
         self.size=32
         self.border=0
+        self.padding=0
         self.x=220
         self.y=220
         self.tts=True
@@ -30,12 +31,13 @@ class Config():
         self.size=int(self.size)
         self.height=int(self.height)
         self.width=int(self.width)
+        self.padding=int(self.padding)
         self.x=int(self.x)
         self.y=int(self.y)
 
     def __str__(self):
-        return "delay:{} mili:{} font:{} color:{} show:{} offset:{} size:{} height:{} width:{} x,y={},{} tts={}".format(self.delay,
-        self.miliseconds,self.font,self.color,self.show,self.offset,self.size,self.height,self.width,self.x,self.y,self.tts)
+        return "delay:{} mili:{} font:{} color:{} show:{} offset:{} padding:{} size:{} height:{} width:{} x,y={},{} tts={}".format(self.delay,
+        self.miliseconds,self.font,self.color,self.show,self.offset,self.padding,self.size,self.height,self.width,self.x,self.y,self.tts)
 
 class Timer():
     def __init__(self):
@@ -56,7 +58,7 @@ class Timetable():
         self.shotcall=0
 
     def __call__(self,time,updateobject):
-        if self.waitfor<time: # Time to change the text for the next mechanic
+        if self.waitfor<time-self.config.padding: # Time to change the text for the next mechanic
             self.step+=1
             self.updateText(updateobject,time)
             self.waitfor=self.getnext()[0]
@@ -66,13 +68,13 @@ class Timetable():
                 updateobject.destroy()
                 sys.exit()
 
-        elif self.waitfor<time+self.config.offset: #Time to shotcall
+        elif self.waitfor<time+self.config.offset-self.config.padding: #Time to shotcall
             if self.shotcall==0:
                 self.shotcall=1 # You can't shotcall anymore
                 # Only shotcall the lines that exist
                 text=self.getnext()[2]
                 if text!="" and self.config.tts:
-                    print (" > [{}] Shotcalling {} at {}".format(self.step,text,time))
+                    print (" > [{}] Shotcalling {} at {}".format(self.step,text,time-self.config.padding))
                     speak.Speak(text)
 
         else:
@@ -80,7 +82,7 @@ class Timetable():
 
     def updateText(self,updateobject,time):
         "Update the text with the next X mechanics" #Ending are weird, but I can't bother right now
-        print (" > [{}] Showing next {} lines at {}".format(self.step,self.config.show,time))
+        print (" > [{}] Showing next {} lines at {}".format(self.step,self.config.show,time-self.config.padding))
         lines=""
         for a,text,b in self.getnnext(self.config.show):
             lines=lines+text.replace(";","\n   ")+'\n'
@@ -175,7 +177,6 @@ try:
         print "error loading config.txt, using default config"
         base_config=Config()
     print("Cheking Time Data...")
-
     config,timetables=checkfile(time_data,base_config)
 except:
     print("Error reading file")
