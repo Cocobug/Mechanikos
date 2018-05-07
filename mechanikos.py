@@ -35,7 +35,7 @@ class Config():
 
     def __str__(self):
         return "delay:{} mili:{} font:{} color:{} show:{} offset:{} size:{} height:{} width:{} x,y={},{} tts={}".format(self.delay,
-        self.miliseconds,self.font,self.color,self.show,self.offset,self.size,self.height,self.width,self.x,self.y,self.TTS)
+        self.miliseconds,self.font,self.color,self.show,self.offset,self.size,self.height,self.width,self.x,self.y,self.tts)
 
 class Timer():
     def __init__(self):
@@ -102,13 +102,13 @@ class Timetable():
         return r
 
 #Utilities
-def checkfile(f):
+def checkfile(f,config):
     'Check every line of the file for syntax errors and return the config, timetables'
     conf=f[0].split(";")
     timecheck=0
     table=[]
     try:
-        config=load_conf(f[0])
+        config=load_conf(f[0].split(";"),config)
     except:
         print('Error reading config')
 
@@ -125,21 +125,20 @@ def checkfile(f):
             sys.exit()
     return config,Timetable(table,config)
 
-def load_conf(conf):
+def load_conf(table,config=Config()):
     "Load the confing in a line"
-    C=Config()
-    for line in conf.split(";"):
+    for line in table:
         if line=="delay":
-            C.delay=True
+            config.delay=True
         elif line=="miliseconds":
-            C.miliseconds=True
+            config.miliseconds=True
         elif line=="ihateTTS":
-            C.tts=False
+            config.tts=False
         else:
             var,val=line.split('=')
-            setattr(C,var,val)
-    C.valtype()
-    return C
+            setattr(config,var,val)
+    config.valtype()
+    return config
 
 def split_line(line):
     "Split lines according to the nominal format, return time as seconds"
@@ -161,11 +160,25 @@ try:
     print("Initialysing timer")
     gtimer=Timer()
     print("Opening Time Tables...")
-    with open(sys.argv[1]) as f:
+    base_path=os.path.split(sys.argv[0])[0]
+    data_path=os.path.join(base_path,sys.argv[1])
+    main_config=os.path.join(base_path,"config.txt")
+    with open(data_path) as f:
         time_data=f.read().splitlines()
     f.close()
+    try:
+        with open(main_config) as f:
+            config_data=f.read().splitlines()
+        f.close()
+        base_config=load_conf(config_data)
+        print config_data
+        print base_config
+    except:
+        print "error loading config.txt, using default config"
+        base_config=Config()
     print("Cheking Time Data...")
-    config,timetables=checkfile(time_data)
+
+    config,timetables=checkfile(time_data,base_config)
 except:
     print("Error reading file")
     sys.exit()

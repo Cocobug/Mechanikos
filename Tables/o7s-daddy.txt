@@ -1,4 +1,4 @@
-offset=5;font=fixedsys;color=red;size=22;show=2;x=40;y=60;height=7;width=40
+offset=7
 0//Dadaluma (Bump)//Shockwave
 4//Missile & Chakra//Missile & Chakra
 22//Dadaluma (North West)//Dadaluma (North West)

@@ -8,6 +8,7 @@ Dependencies:
 
 Config:
 ''The first line of every project is a config containing some of the following info separated by semicolon''
+''You can use a config file (config.txt), use newlines instead of semicolons''
 * delay=False         # Delay mode instead of absolute time mode
 * miliseconds=False   # Timetable format in ms instead of minutes:seconds
 * ihateTTS=False      # Toggle callouts
