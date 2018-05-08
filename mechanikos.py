@@ -8,6 +8,11 @@ except ImportError:
 import win32com.client as wincl
 speak = wincl.Dispatch("SAPI.SpVoice")
 #Vague config class, will change asap
+def checktrue(a):
+    if a=="True" or a==True:
+        return True
+    return False
+
 class Config():
     def __init__(self):
         self.delay=False
@@ -33,10 +38,10 @@ class Config():
         self.height=int(self.height)
         self.width=int(self.width)
         self.padding=int(self.padding)
-        self.delay=bool(self.delay)
-        self.miliseconds=bool(self.miliseconds)
-        self.quitbutton=bool(self.quitbutton)
-        self.ihateTTS=bool(self.ihateTTS)
+        self.delay=checktrue(self.delay)
+        self.ihateTTS=checktrue(self.ihateTTS)
+        self.miliseconds=checktrue(self.miliseconds)
+        self.quitbutton=checktrue(self.quitbutton)
         self.x=int(self.x)
         self.y=int(self.y)
 
@@ -78,7 +83,8 @@ class Timetable():
                 self.shotcall=1 # You can't shotcall anymore
                 # Only shotcall the lines that exist
                 text=self.getnext()[2]
-                if text!="" and self.config.ihateTTS:
+                print self.config.ihateTTS
+                if text!="" and not self.config.ihateTTS:
                     print (" > [{}] Shotcalling {} at {}".format(self.step,text,time-self.config.padding))
                     speak.Speak(text)
         else:
