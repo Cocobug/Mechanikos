@@ -1,4 +1,4 @@
-padding=5
+
 00:08 // 1HP // Heartless Angel
 00:14 // Raid Damage // Raid damage
 00:21 // HYPERDRIVE // Hyperdrive

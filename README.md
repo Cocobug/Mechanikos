@@ -12,7 +12,7 @@ Config:
 * delay=False         # Delay mode instead of absolute time mode
 * padding=0           # A delay for every mechanic (adds a number to every timing)
 * miliseconds=False   # Timetable format in ms instead of minutes:seconds
-* quitbutton          # Add a quit button (the window is no longer disabled)
+* quitbutton=False    # Add a quit button (the window is no longer disabled)
 * ihateTTS=False      # Toggle callouts
 * font=fixedsys       # Font to use for displayed
 * color=red           # Font color

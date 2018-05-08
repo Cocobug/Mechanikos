@@ -12,7 +12,8 @@ class Config():
     def __init__(self):
         self.delay=False
         self.miliseconds=False
-        self.quitbutton=False
+        self.quitbutton=True
+        self.ihateTTS=False
         self.font="fixedsys"
         self.color="red"
         self.show=1
@@ -33,12 +34,16 @@ class Config():
         self.height=int(self.height)
         self.width=int(self.width)
         self.padding=int(self.padding)
+        self.delay=bool(self.delay)
+        self.miliseconds=bool(self.miliseconds)
+        self.quitbutton=bool(self.quitbutton)
+        self.ihateTTS=bool(self.ihateTTS)
         self.x=int(self.x)
         self.y=int(self.y)
 
     def __str__(self):
-        return "delay:{} mili:{} font:{} color:{} show:{} offset:{} padding:{} size:{} height:{} width:{} x,y={},{} tts={}".format(self.delay,
-        self.miliseconds,self.font,self.color,self.show,self.offset,self.padding,self.size,self.height,self.width,self.x,self.y,self.tts)
+        return "delay:{} mili:{} quitB:{} font:{} color:{} show:{} offset:{} padding:{} size:{} height:{} width:{} x,y={},{} tts={}".format(self.delay,
+        self.miliseconds,self.miliseconds,self.font,self.color,self.show,self.offset,self.padding,self.size,self.height,self.width,self.x,self.y,self.tts)
 
 class Timer():
     def __init__(self):
@@ -130,17 +135,8 @@ def checkfile(f,config):
 def load_conf(table,config=Config()):
     "Load the confing in a line"
     for line in table:
-        if line=="delay":
-            config.delay=True
-        elif line=="miliseconds":
-            config.miliseconds=True
-        elif line=="quitbutton":
-            config.quitbutton=True
-        elif line=="ihateTTS":
-            config.tts=False
-        else:
-            var,val=line.split('=')
-            setattr(config,var,val)
+        var,val=line.split('=')
+        setattr(config,var,val)
     config.valtype()
     return config
 
