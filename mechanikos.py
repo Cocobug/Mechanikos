@@ -12,6 +12,7 @@ class Config():
     def __init__(self):
         self.delay=False
         self.miliseconds=False
+        self.quitbutton=False
         self.font="fixedsys"
         self.color="red"
         self.show=1
@@ -76,7 +77,6 @@ class Timetable():
                 if text!="" and self.config.tts:
                     print (" > [{}] Shotcalling {} at {}".format(self.step,text,time-self.config.padding))
                     speak.Speak(text)
-
         else:
             return None
 
@@ -134,6 +134,8 @@ def load_conf(table,config=Config()):
             config.delay=True
         elif line=="miliseconds":
             config.miliseconds=True
+        elif line=="quitbutton":
+            config.quitbutton=True
         elif line=="ihateTTS":
             config.tts=False
         else:
@@ -197,15 +199,19 @@ class Application(tk.Frame):
         master.geometry("+{}+{}".format(config.x,config.y))
         master.lift()
         master.wm_attributes("-topmost", True)
-        master.wm_attributes("-disabled", True)
-        master.wm_attributes("-transparentcolor", self.acolor) #Make that clever
-        self.pack()
+        master.wm_attributes("-disabled", not config.quitbutton)
+        master.wm_attributes("-transparentcolor", self.acolor)
+        if config.quitbutton:
+            master["bg"] = self.acolor
+            B=tk.Button(master, text="X",anchor='w',justify=tk.LEFT, command=master.destroy)
+            B.grid(row=0,sticky='w')
         self.createWidgets()
+        self.grid()
 
     def createWidgets(self):
         self.now = tk.StringVar()
         self.time = tk.Label(self,bg=self.acolor, height=config.height, justify=tk.LEFT,anchor='nw',width=config.width,bd=config.border,fg=config.color,font=(config.font, config.size))
-        self.time.grid(sticky="w")
+        self.time.grid(row=1,sticky='w')
         self.time["textvariable"] = self.now
         self.timetables.updateText(self,self.timer())
         # initial time display
