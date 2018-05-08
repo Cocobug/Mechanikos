@@ -194,12 +194,12 @@ class Application(tk.Frame):
         master.overrideredirect(True)
         master.geometry("+{}+{}".format(config.x,config.y))
         master.lift()
+        master["bg"] = self.acolor
         master.wm_attributes("-topmost", True)
         master.wm_attributes("-disabled", not config.quitbutton)
         master.wm_attributes("-transparentcolor", self.acolor)
         if config.quitbutton:
-            master["bg"] = self.acolor
-            B=tk.Button(master, text="X",anchor='w',justify=tk.LEFT, command=master.destroy)
+            B=tk.Button(master, bg=config.color,text="X",anchor='w',justify=tk.LEFT, command=master.destroy)
             B.grid(row=0,sticky='w')
         self.createWidgets()
         self.grid()
