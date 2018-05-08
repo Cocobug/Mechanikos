@@ -7,8 +7,8 @@ Dependencies:
 * update ENV (check https://github.com/BurntSushi/nfldb/wiki/Python-&-pip-Windows-installation)
 
 Config:
-''The first line of every project is a config containing some of the following info separated by semicolon''
-''You can use a config file (config.txt), use newlines instead of semicolons''
+''The first line of every project is a config containing some of the following info separated by semicolon, which overwrites personal configs. Leave empty unless needed.''
+''Create a config file (config.txt) in the main directory, for your personal preferences as shown below. Every new argument must be separated with a line break.''
 * delay=False         # Delay mode instead of absolute time mode
 * padding=0           # A delay for every mechanic (adds a number to every timing)
 * miliseconds=False   # Timetable format in ms instead of minutes:seconds
