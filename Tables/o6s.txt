@@ -1,16 +1,16 @@
 
-0:00 // Raid Damage // Raid damage
-0:10 // Tank Buster // 
+0:00 // Raid damage // Raid damage
+0:10 // Tank buster // 
 0:28 // Blue // blue
-0:52 // tank stack + raid damage // 
-1:10 // Tank buster + healers tethers // 
+0:52 // Tank stack + Raid damage // 
+1:10 // Tank buster + Healers tethers // 
 1:18 // Raid damage + Gaze // 
 1:24 // Tethers // 
 1:39 // Raid damage // 
 1:48 // Release // 
 1:53 // Pink + Yellow // 
-2:08 // stack > hide // 
-2:12 // Tank Buster //
+2:08 // Stack > Hide // 
+2:12 // Tank buster //
 2:21 // Raid damage //
 2:29 // Raid damage //
 2:39 // Last kiss pray // 
@@ -18,8 +18,8 @@
 3:05 // Tank buster + healers tethers // 
 3:10 // Share + gaze // 
 3:23 // Raid damage // 
-3:16 // Release // 
-3:21 // Blue + Black // 
+3:36 // Release // 
+3:41 // Blue + Black // 
 4:18 // Tethers // 
 4:28 // Siren // 
 4:31 // Raid damage // 
@@ -28,12 +28,12 @@
 4:53 // Pray DPS // 
 5:03 // Last kiss pray // 
 5:10 // Raid damage //
-5:20 // explosion // 
-5:30 // release //
+5:20 // Explosion // 
+5:30 // Release //
 5:31 // Yellow + Pink //
-5:49 // stack > hide > stack // 
+5:49 // Stack > hide > stack // 
 6:00 // Raid damage // 
-6:26 // stack > dodge > share // 
+6:26 // Stack > dodge > share // 
 6:42 // Raid damage // 
 6:52 // Tethers // 
 6:58 // Last kiss pray // 
@@ -42,7 +42,7 @@
 7:26 // Tank buster // 
 7:39 // Release // 
 7:44 // Blue + Black // 
-8:04 // Tank stack + raid damage // 
+8:04 // Tank stack + Raid damage // 
 8:16 // Tanks buster // 
 8:40 // Pray DPS // 
 8:45 // Healer tether // 
