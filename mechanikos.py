@@ -25,7 +25,6 @@ class Config():
         self.padding=0
         self.x=220
         self.y=220
-        self.tts=True
 
     def valtype(self):
         self.show=int(self.show)
@@ -43,7 +42,7 @@ class Config():
 
     def __str__(self):
         return "delay:{} mili:{} quitB:{} font:{} color:{} show:{} offset:{} padding:{} size:{} height:{} width:{} x,y={},{} tts={}".format(self.delay,
-        self.miliseconds,self.miliseconds,self.font,self.color,self.show,self.offset,self.padding,self.size,self.height,self.width,self.x,self.y,self.tts)
+        self.miliseconds,self.miliseconds,self.font,self.color,self.show,self.offset,self.padding,self.size,self.height,self.width,self.x,self.y,self.ihateTTS)
 
 class Timer():
     def __init__(self):
@@ -79,7 +78,7 @@ class Timetable():
                 self.shotcall=1 # You can't shotcall anymore
                 # Only shotcall the lines that exist
                 text=self.getnext()[2]
-                if text!="" and self.config.tts:
+                if text!="" and self.config.ihateTTS:
                     print (" > [{}] Shotcalling {} at {}".format(self.step,text,time-self.config.padding))
                     speak.Speak(text)
         else:
@@ -123,12 +122,12 @@ def checkfile(f,config):
         try:
             time,show,say=split_line(f[i])
             if time<timecheck:
-                print("Error on the timetables line {}".format(i))
+                print("Error on the timetables line {} time went from {} to {}".format(i+1,time,timecheck))
                 raise AssertionError
             timecheck=time
             table.append([time,show,say])
         except:
-            print("error line {} : {}".format(i,f[i]))
+            print("Error line {} : {}".format(i,f[i]))
             sys.exit()
     return config,Timetable(table,config)
 
@@ -172,7 +171,7 @@ try:
         f.close()
         base_config=load_conf(config_data)
     except:
-        print "error loading config.txt, using default config"
+        print "Error loading config.txt, using default config"
         base_config=Config()
     print("Cheking Time Data...")
     config,timetables=checkfile(time_data,base_config)
