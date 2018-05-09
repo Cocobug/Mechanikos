@@ -15,7 +15,7 @@ def checktrue(a):
 
 class Config():
     def __init__(self):
-        self.delay=False
+        self.delaymode=False
         self.miliseconds=False
         self.quitbutton=True
         self.ihateTTS=False
@@ -24,21 +24,21 @@ class Config():
         self.show=1
         self.height=7
         self.width=30
-        self.offset=5
+        self.calldelay=5
         self.size=32
         self.border=0
-        self.padding=0
+        self.delay=0
         self.x=220
         self.y=220
 
     def valtype(self):
         self.show=int(self.show)
-        self.offset=int(self.offset)
+        self.calldelay=int(self.calldelay)
         self.size=int(self.size)
         self.height=int(self.height)
         self.width=int(self.width)
-        self.padding=int(self.padding)
-        self.delay=checktrue(self.delay)
+        self.delay=int(self.delay)
+        self.delaymode=checktrue(self.delay)
         self.ihateTTS=checktrue(self.ihateTTS)
         self.miliseconds=checktrue(self.miliseconds)
         self.quitbutton=checktrue(self.quitbutton)
@@ -46,8 +46,8 @@ class Config():
         self.y=int(self.y)
 
     def __str__(self):
-        return "delay:{} mili:{} quitB:{} font:{} color:{} show:{} offset:{} padding:{} size:{} height:{} width:{} x,y={},{} tts={}".format(self.delay,
-        self.miliseconds,self.miliseconds,self.font,self.color,self.show,self.offset,self.padding,self.size,self.height,self.width,self.x,self.y,self.ihateTTS)
+        return "delaymode:{} mili:{} quitB:{} font:{} color:{} show:{} calldelay:{} delay:{} size:{} height:{} width:{} x,y={},{} tts={}".format(self.delaymode,
+        self.miliseconds,self.miliseconds,self.font,self.color,self.show,self.calldelay,self.delay,self.size,self.height,self.width,self.x,self.y,self.ihateTTS)
 
 class Timer():
     def __init__(self):
@@ -68,31 +68,33 @@ class Timetable():
         self.shotcall=0
 
     def __call__(self,time,updateobject):
-        if self.waitfor<time-self.config.padding: # Time to change the text for the next mechanic
+        if self.waitfor<time-self.config.delay: # Time to change the text for the next mechanic
             self.step+=1
             self.updateText(updateobject,time)
-            self.waitfor=self.getnext()[0]
+            if self.config.delaymode:
+                self.waitfor+=self.getnext()[0]
+            else:
+                self.waitfor=self.getnext()[0]
             self.shotcall=0 # You can shotcall again
             if self.step>self.ln: #Stop the program
                 print ("Timetable finished, shutting down")
                 updateobject.destroy()
                 sys.exit()
 
-        elif self.waitfor<time+self.config.offset-self.config.padding: #Time to shotcall
+        elif self.waitfor<time+self.config.calldelay-self.config.delay: #Time to shotcall
             if self.shotcall==0:
                 self.shotcall=1 # You can't shotcall anymore
                 # Only shotcall the lines that exist
                 text=self.getnext()[2]
-                print self.config.ihateTTS
                 if text!="" and not self.config.ihateTTS:
-                    print (" > [{}] Shotcalling {} at {}".format(self.step,text,time-self.config.padding))
+                    print (" > [{}] Shotcalling {} at {}".format(self.step,text,time-self.config.delay))
                     speak.Speak(text)
         else:
             return None
 
     def updateText(self,updateobject,time):
         "Update the text with the next X mechanics" #Ending are weird, but I can't bother right now
-        print (" > [{}] Showing next {} lines at {}".format(self.step,self.config.show,time-self.config.padding))
+        print (" > [{}] Showing next {} lines at {}".format(self.step,self.config.show,time-self.config.delay))
         lines=""
         for a,text,b in self.getnnext(self.config.show):
             lines=lines+text.replace(";","\n   ")+'\n'
@@ -102,7 +104,7 @@ class Timetable():
         try:
             return self.timetables[index]
         except:
-            return [self.timetables[self.ln-1][0]+self.config.offset,"",""]
+            return [self.timetables[self.ln-1][0]+self.config.calldelay,"",""]
 
     def getnext(self):
         return self.getindex(self.step)
@@ -154,12 +156,12 @@ def split_line(line):
         #Only powers of 60 so yeah; 1:12:33:11 will be incorrect, bite me
         time=time*60+int(hms)
     return time,show,say
-# Init the thread for the TTS (can't have times offset by the wait)
+# Init the thread for the TTS (can't have times calldelay by the wait)
 
 # Load the Timetable
 # First line should be config or empty
 # Delay means delay mode instead of global time, miliseconds is miliseconds for time
-# offset is the amount of time before the call (negative for precall)
+# calldelay is the amount of time before the call (negative for late call (why ?))
 # Every line Should look like Time (HH:MM:SS or SS) // Text to show // Text to say
 try:
     print("Initialysing timer")
@@ -221,7 +223,6 @@ class Application(tk.Frame):
     def onUpdate(self):
         # update displayed time
         self.timetables(self.timer(),self)
-        # schedule timer to call myself after 1 second
         self.after(100, self.onUpdate)
 
     def changeText(self,newtext):

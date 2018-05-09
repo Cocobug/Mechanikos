@@ -1,41 +1,41 @@
-offset=7
-0//Dadaluma (Bump)//Shockwave
-4//Missile & Chakra//Missile & Chakra
-22//Dadaluma (North West)//Dadaluma (North West)
-36//Magitek Ray//Ray
-51//Arm and Hammer//Tank Buster
-63//Prey//Prey
-73//Magitek Ray//Ray
-88//Biblio Circles//Biblio Circles
-106//Air Force (Move away)//Air Force (Move away)
-108//Missile & Adds//Missile & Adds
-142//Bomb Deployement//Bombs
-152//Arm and Hammer//Tank Buster
-161//Ray//Ray
-167//Ultros (Ink)//Ultros (Ink)
-186//Raid Damage//Raid Damage
-196//Tentacles//Tentacles
-207//Ultros (South East)//Ultros (South East)
-244//Raid Damage//Raid Damage
-259//Virus//Virus
-278//Raid Damage x2//Raid Damage x2
-301//Prey//Prey
-313//Disoriented//Disoriented
-319//Ray//Ray
-325//Flight + Stop//Flight + Stop
-346//Arm and Hammer//Tank Buster
-354//Raid Damage//Raid Damage
-369//Air Force (Move away)//Air Force (Move away)
-377//Raid Damage//Raid Damage
-394//Adds & Bombs//Adds & Bombs
-408//Arm and Hammer//Tank Buster
-416//Raid Damage//Raid Damage
-418//Biblio or Daddy//Biblio or Daddy
-570//Ultros (Ink)//Ultros (Ink)
-580//Ultros (Tentacles)//Ultros (Tentacles)
-586//Bomb + Atomic//Bomb + Atomic
-600//Ray//Ray
-608//Raid Damage//Raid Damage
-618//Ultros (North East)//Ultros (North East)
-652//Raid Damage//Raid Damage
-662//Enrage//Enrage
+calldelay=7;delay=-52
+0:52//Dadaluma (Bump)//Shockwave
+0:56//Missile & Chakra//Missile & Chakra
+1:14//Dadaluma (North West)//Dadaluma (North West)
+1:28//Magitek Ray//Ray
+1:43//Arm and Hammer//Tank Buster
+1:55//Prey//Prey
+2:5//Magitek Ray//Ray
+2:20//Biblio Circles//Biblio Circles
+2:38//Air Force (Move away)//Air Force (Move away)
+2:40//Missile & Adds//Missile & Adds
+3:14//Bomb Deployement//Bombs
+3:24//Arm and Hammer//Tank Buster
+3:33//Ray//Ray
+3:39//Ultros (Ink)//Ultros (Ink)
+3:58//Raid Damage//Raid Damage
+4:8//Tentacles//Tentacles
+4:19//Ultros (South East)//Ultros (South East)
+4:56//Raid Damage//Raid Damage
+5:11//Virus//Virus
+5:30//Raid Damage x2//Raid Damage x2
+5:53//Prey//Prey
+6:5//Disoriented//Disoriented
+6:11//Ray//Ray
+6:17//Flight + Stop//Flight + Stop
+6:38//Arm and Hammer//Tank Buster
+6:46//Raid Damage//Raid Damage
+7:1//Air Force (Move away)//Air Force (Move away)
+7:9//Raid Damage//Raid Damage
+7:26//Adds & Bombs//Adds & Bombs
+7:40//Arm and Hammer//Tank Buster
+7:48//Raid Damage//Raid Damage
+7:50//Biblio;Circles+Stop;Raid+Prey+TB;Daddy;Bump+Atomic+Chakra+Prey//Biblio or Daddy
+10:19//Ultros (Ink)//Ultros (Ink)
+10:32//Ultros (Tentacles)//Ultros (Tentacles)
+10:38//Bomb + Atomic//Bomb + Atomic
+10:52//Ray//Ray
+11:0//Raid Damage//Raid Damage
+11:10//Ultros (North East)//Ultros (North East)
+11:44//Raid Damage//Raid Damage
+11:54//Enrage//Enrage
