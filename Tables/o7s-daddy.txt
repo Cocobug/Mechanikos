@@ -30,7 +30,8 @@ calldelay=7;delay=-52
 7:26//Adds & Bombs//Adds & Bombs
 7:40//Arm and Hammer//Tank Buster
 7:48//Raid Damage//Raid Damage
-7:50//Biblio;Circles+Stop;Raid+Prey+TB;Daddy;Bump+Atomic+Chakra+Prey//Biblio or Daddy
+7:50//Biblio or Daddy//Biblio or Daddy
+10:15//Biblio;Circles+Stop;Raid+Prey+TB;Daddy;Bump+Atomic+Chakra+Prey// 
 10:19//Ultros (Ink)//Ultros (Ink)
 10:32//Ultros (Tentacles)//Ultros (Tentacles)
 10:38//Bomb + Atomic//Bomb + Atomic

@@ -32,7 +32,8 @@ calldelay=7;delay=-53
 7:37//Raid Damage//Raid Damage
 7:47//Ultros (South East)//Ultros (South East)
 8:21//Raid Damage//Raid Damage
-8:23//Biblio;Circles+Stop;Raid+Prey+TB;Daddy;Bump+Atomic+Chakra+Prey//Biblio or Daddy
+8:23//Biblio or Daddy//Biblio or Daddy
+10:54//Biblio;Circles+Stop;Raid+Prey+TB;Daddy;Bump+Atomic+Chakra+Prey// 
 10:57//Air Force (Move away) + Stop//Air Force (Move away) + Stop
 11:13//Raid Damage//Raid Damage
 11:30//Adds & Bombs//Adds & Bombs
