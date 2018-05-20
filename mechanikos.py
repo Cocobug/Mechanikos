@@ -5,8 +5,9 @@ try:
 except ImportError:
     import Tkinter as tk
 
-import win32com.client as wincl
-speak = wincl.Dispatch("SAPI.SpVoice")
+from mechatts import ttsObject as tts
+speak = tts()
+
 #Vague config class, will change asap
 def checktrue(a):
     if a=="True" or a==True:
@@ -194,17 +195,24 @@ class Application(tk.Frame):
         self.timetables=timetables
         self.gconfig=config
         if config.color=="white":
-            self.acolor="black"
+            self.bgcolor="black"
         else:
-            self.acolor="white"
+            self.bgcolor="white"
         tk.Frame.__init__(self, master)
         master.overrideredirect(True)
         master.geometry("+{}+{}".format(config.x,config.y))
         master.lift()
-        master["bg"] = self.acolor
+        master["bg"] = self.bgcolor
         master.wm_attributes("-topmost", True)
-        master.wm_attributes("-disabled", not config.quitbutton)
-        master.wm_attributes("-transparentcolor", self.acolor)
+        try:
+            master.wm_attributes("-disabled", not config.quitbutton)
+        except:
+            if not config.quitbutton:
+                print("  Impossible to disable window")
+        try:
+            master.wm_attributes("-transparentcolor", self.bgcolor)
+        except:
+            print("  Impossible to make the background transparent")
         if config.quitbutton:
             B=tk.Button(master, bg=config.color,text="X",anchor='w',justify=tk.LEFT, command=master.destroy)
             B.grid(row=0,sticky='w')
@@ -213,7 +221,7 @@ class Application(tk.Frame):
 
     def createWidgets(self):
         self.now = tk.StringVar()
-        self.time = tk.Label(self,bg=self.acolor, height=config.height, justify=tk.LEFT,anchor='nw',width=config.width,bd=config.border,fg=config.color,font=(config.font, config.size))
+        self.time = tk.Label(self,bg=self.bgcolor, height=config.height, justify=tk.LEFT,anchor='nw',width=config.width,bd=config.border,fg=config.color,font=(config.font, config.size))
         self.time.grid(row=1,sticky='w')
         self.time["textvariable"] = self.now
         self.timetables.updateText(self,self.timer())
