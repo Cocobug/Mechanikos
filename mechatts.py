@@ -1,8 +1,8 @@
 import threading
 try:
     import win32com.client as wincl
+    speak = wincl.Dispatch("SAPI.SpVoice")
     def speak_function(text):
-        speak = wincl.Dispatch("SAPI.SpVoice")
         speak.Speak(text)
 except:
     import pyttsx
@@ -18,11 +18,12 @@ class ttsObject():
         self.wait=None
 
     def Speak(self,text):
-        if self.wait!=None:
-            self.wait.join()
-        self.wait=threading.Thread(target=speak_function,args=(text,))
-        self.wait.start()
-        return self.wait
+        #if self.wait!=None:
+        #    self.wait.join()
+        #self.wait=threading.Thread(target=speak_function,args=(text,))
+        #self.wait.start()
+        #return self.wait
+        speak_function(text)
 
 if __name__ == '__main__':
     import sys,time
