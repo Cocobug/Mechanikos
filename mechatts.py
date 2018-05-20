@@ -1,8 +1,8 @@
 import threading
 try:
     import win32com.client as wincl
-    speak = wincl.Dispatch("SAPI.SpVoice")
     def speak_function(text):
+        speak = wincl.Dispatch("SAPI.SpVoice")
         speak.Speak(text)
 except:
     import pyttsx
