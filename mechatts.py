@@ -3,7 +3,7 @@ try:
     import win32com.client as wincl
     speak = wincl.Dispatch("SAPI.SpVoice")
     def speak_function(text):
-        speak.say(text)
+        speak.Speak(text)
 except:
     import pyttsx
 
