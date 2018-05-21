@@ -5,13 +5,17 @@ try:
     def speak_function(text):
         speak.Speak(text)
 except:
-    import pyttsx
-
-    def speak_function(text):
-        engine = pyttsx.init()
-        engine.setProperty('rate', 170)
-        engine.say(text)
-        engine.runAndWait()
+    try:
+        import pyttsx
+        def speak_function(text):
+            engine = pyttsx.init()
+            engine.setProperty('rate', 170)
+            engine.say(text)
+            engine.runAndWait()
+    except:
+        print("No tts software was available, install either pywin32 or pyttsx")
+        def speak_function(text):
+            pass
 
 class ttsObject():
     def __init__(self):
@@ -23,7 +27,10 @@ class ttsObject():
         #self.wait=threading.Thread(target=speak_function,args=(text,))
         #self.wait.start()
         #return self.wait
-        speak_function(text)
+        try:
+            speak_function(text)
+        except:
+            print("Error while calling tts function")
 
 if __name__ == '__main__':
     import sys,time

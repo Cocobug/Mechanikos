@@ -125,7 +125,7 @@ def checkfile(f,config):
     try:
         config=load_conf(f[0].split(";"),config)
     except:
-        print('Error reading config')
+        print('Error while reading file config, using user config instead')
 
     for i in range(1,len(f)):
         try:
@@ -142,6 +142,8 @@ def checkfile(f,config):
 
 def load_conf(table,config=Config()):
     "Load the confing in a line"
+    if len(table)==1 and table[0]=="": # Let's not load empty configs
+        return config
     for line in table:
         var,val=line.split('=')
         setattr(config,var,val)
@@ -180,12 +182,12 @@ try:
         f.close()
         base_config=load_conf(config_data)
     except:
-        print "Error loading config.txt, using default config"
+        print("Could not load {}, using default config instead".format(main_config))
         base_config=Config()
     print("Cheking Time Data...")
     config,timetables=checkfile(time_data,base_config)
 except:
-    print("Error reading file")
+    print("Error reading file {}".format(data_path))
     sys.exit()
 
 
@@ -208,11 +210,11 @@ class Application(tk.Frame):
             master.wm_attributes("-disabled", not config.quitbutton)
         except:
             if not config.quitbutton:
-                print("  Impossible to disable window")
+                print("Warning: Impossible to disable window")
         try:
             master.wm_attributes("-transparentcolor", self.bgcolor)
         except:
-            print("  Impossible to make the background transparent")
+            print("Warning: Impossible to make the background transparent")
         if config.quitbutton:
             B=tk.Button(master, bg=config.color,text="X",anchor='w',justify=tk.LEFT, command=master.destroy)
             B.grid(row=0,sticky='w')
